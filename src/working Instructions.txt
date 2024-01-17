@@ -1,0 +1,18 @@
+// DECIDED THAT RUNNING ALL THE TESTS IS GOING TO TAKE AGES AND THEREFORE JUST RUNNING TESTS WE NEED
+
+// Testing Non-Pipelined Processor
+// Image Processing
+-o = 0,1,2,3 -- working for all predictors
+./main -ss 0 -pw 1 -fm 0 -bm 0 -i 1 -o 0 -v 0 ./filename # Working For "Enhance.s"
+// Normal Processing
+-o = 0,1,2,3 -- working for all predictors
+./main -ss 0 -pw 1 -fm 0 -bm 0 -i 0 -o 0 -v 0 ./filename # Working For "fib.s","myFib.s","bsort.s","myBsort.s"
+
+//Testing Pipelined Processor
+//Single Width Pipeline Normal Scoreboard
+//Image Processing
+-o = 0,1,2,3 -- working for all predictors
+./main -ss 1 -pw 1 -fm 0 -bm 0 -i 1 -o 0 -v 0 ./filename # Working For "Enhance.s"
+//Normal Processing
+-o = 0,1,2,3 -- working for all predictors
+./main -ss 1 -pw 1 -fm 0 -bm 0 -i 0 -o 0 -v 0 ./filename # Working For "fib.s","myFib.s","bsort.s","myBsort.s"

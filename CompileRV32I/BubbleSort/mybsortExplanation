@@ -1,0 +1,34 @@
+
+END OF REAL CODE EXPLANATION HERE
+
+    addi s0, zero, 10   # array size is 10
+    addi s1, zero, 0    # outer loop counter
+
+outer_loop:
+    addi s2, zero, 1    # initialize flag to 1
+    addi s3, zero, 0    # inner loop counter
+    addi t0, zero, 0    # initialize temporary variable for swapping
+
+inner_loop:
+    bge s3, s0, end_inner_loop   # exit loop if inner loop counter is greater than array size
+    addi t1, s3, 1              # calculate index of next element
+    add t2, s3, a0              # calculate memory address of current element
+    lw t3, 0(t2)                # load current element into t3
+    add t4, t1, a0              # calculate memory address of next element
+    lw t5, 0(t4)                # load next element into t5
+    bge t3, t5, swap            # swap elements if current element is greater than next element
+    addi s3, s3, 1              # increment inner loop counter
+    j inner_loop
+
+swap:
+    add t0, t3, zero            # store current element in t0
+    sw t5, 0(t2)                # store next element in memory
+    sw t0, 0(t4)                # store current element in memory
+    addi s2, zero, 0            # set flag to 0 to indicate a swap occurred
+    addi s3, s3, 1              # increment inner loop counter
+    j inner_loop
+
+end_inner_loop:
+    bne s2, zero, outer_loop    # continue outer loop if a swap occurred
+    addi s1, s1, 1              # increment outer loop counter
+    blt s1, s0, outer_loop      # continue outer loop if outer loop counter is less than array size

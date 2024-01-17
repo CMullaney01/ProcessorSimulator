@@ -1,0 +1,14 @@
+sudo /opt/riscv/bin/riscv32-unknown-linux-gnu-g++ -S -march=rv32id -o sum.s sum.cpp
+
+The above will output a sum.s file which we can use in our simulator.
+
+
+Some more
+sudo /opt/riscv/bin/riscv32-unknown-linux-gnu-g++ -S -march=rv32i -mabi=ilp32 -mno-pseudo -o sum.s sum.cpp
+-- this allws us to remove the d extension and use the ilp32 abi
+
+sudo /opt/riscv/bin/riscv32-unknown-linux-gnu-g++ -S -march=rv32i -mabi=ilp32 -fno-delayed-branch -fno-inline-functions -o sum.s sum.cpp
+-- this allws us to remove the d extension and use the ilp32 abi and remove the delay slot and inline functions
+
+
+adding the -O3 flag is cool as it makes the code as efficient as possible

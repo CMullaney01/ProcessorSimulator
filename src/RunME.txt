@@ -1,0 +1,12 @@
+[-ss <super-scalar>] [-pw <pipeline-width>] [-fm <forwarding-mode>] [-bm <branch-prediction-mode>] [-i <image>] [-o <out-of-order>] [-v] <filename>
+
+-ss // Super Scalar: 0 = no, 1 = yes
+-pw // pipeline_width: 1, 2, 4, 8
+-fm // forwarding_mode: 0 = none, 1 = forwarding, 2 = forwarding + renaming
+-bm // branch_prediction_mode: 0 = StaticNotTakenBranchPredictor, 1 = staticTaken, 2 = dynamic 1 bit, 3 = dynamic 2 bit
+-i // image: 0 = no image, 1 = image // Use this For image processing so we place to appropriate memory and print to csv
+-o // out-of-order: 0 = no, 1 = yes // only works with RF + Renaming as otherwise we get blocking issue from false dependencies
+-v // verbose: 0 = no, 1 = yes
+```
+example:
+./main -ss 1 -pw 1 -fm 2 -bm 3 -i 0 -o 0 -v 0 ./fib.s
